@@ -1,0 +1,16 @@
+{
+  "name": "Malatya Oto Çekici & 7/24 Yol Yardım",
+  "short_name": "Malatya Çekici",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ffca08",
+  "icons": [
+    {
+      "src": "Malatya Taksi.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
