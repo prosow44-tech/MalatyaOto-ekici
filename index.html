@@ -29,7 +29,7 @@
       "@type": "EmergencyService",
       "name": "Malatya Oto Çekici & 7/24 Oto Kurtarma",
       "description": "Malatya genelinde 7/24 acil oto çekici, oto kurtarma, yol yardım, kaza ve arıza araç kurtarma, şehir içi ve şehirler arası sigortalı araç taşıma hizmeti.",
-      "telephone": "+905332153481",
+      "telephone": "+905345957444",
       "areaServed": [
         { "@type": "City", "name": "Malatya" },
         { "@type": "AdministrativeArea", "name": "Yeşilyurt" },
@@ -79,7 +79,7 @@
       gtag('js', new Date());
       gtag('config', 'AW-16894468875');
       gtag('config', 'AW-16894468875/iZ9vCNHC1aMaEIvG9Pc-', {
-        'phone_conversion_number': '05332153481'
+        'phone_conversion_number': '05345957444'
       });
     </script>
 
@@ -138,10 +138,22 @@
             box-sizing: border-box;
             z-index: 1000;
             border-bottom: none;
+            flex-wrap: nowrap;
         }
 
         .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 1; }
-        .site-logo { height: 68px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.75)); }
+        
+        /* LOGO ARKA PLAN KALDIRMA VE DÜZENLEME CSS'İ */
+        .site-logo { 
+            height: 68px; 
+            width: auto; 
+            object-fit: contain; 
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.75)); 
+            /* Siyah logo ve beyaz arkaplanı şeffaf beyaz vektöre çevirir */
+            mix-blend-mode: screen;
+            filter: invert(1) brightness(2);
+        }
+
         .logo-text-desktop { font-weight: 700; font-size: 1.6rem; letter-spacing: -0.5px; display: block; text-shadow: 0 2px 10px rgba(0,0,0,0.85); }
         .logo-text-desktop span { 
             color: var(--taxi-yellow); font-weight: 900; text-transform: uppercase;
@@ -156,6 +168,7 @@
             font-weight: 900; color: #00ff88; font-size: 0.8rem; background: rgba(0, 0, 0, 0.45);
             padding: 8px 15px; border-radius: 40px; border: 2px solid #00ff88;
             display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            flex-shrink: 0;
         }
         .status-dot {
             width: 12px; height: 12px; background-color: #00ff88;
@@ -180,15 +193,17 @@
             background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.20)); z-index: 1; pointer-events: none;
         }
         .hero-main-content { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; z-index: 10; }
+        
         .text-wrapper { position: relative; width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; }
         .anim-text {
             position: absolute; font-size: 38px; font-weight: 900; color: #fff;
             text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,0.8);
             opacity: 0; transition: opacity 0.6s ease-in-out; pointer-events: none;
+            width: 100%; padding: 0 15px; box-sizing: border-box; text-align: center;
         }
         .anim-text.active { opacity: 1; }
 
-        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative;}
+        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative; width: 100%;}
         .my-btn {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             width: 210px; height: 90px; color: white; font-weight: bold; text-decoration: none;
@@ -271,7 +286,6 @@
             font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0; padding: 0; line-height: 1;
         }
 
-        /* İOS (İPHONE) MANUEL YÜKLEME MODALI CSS (REFERANS KODUNDAN BİREBİR) */
         .ios-pwa-overlay {
             position: fixed; inset: 0; background: rgba(15, 23, 42, 0.86);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -335,21 +349,32 @@
 
         footer { background: rgba(0, 0, 0, 0.85); padding: 50px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
 
+        /* MOBİL DÜZENLEMELERİ (TAKSİ GİBİ NİZAMİ YAPILDI) */
         @media (max-width: 768px) {
-            .site-logo { height: 53px; }
+            header { padding: 12px 3%; } 
+            .logo { gap: 8px; }
+            .site-logo { height: 42px; } /* Logoyu daraltıp yer açtık */
             .logo-text-desktop { display: none; }
             .logo-text-mobile { 
-                display: flex; align-items: center; gap: 10px; text-align: left;
+                display: flex; align-items: center; gap: 8px; text-align: left;
                 line-height: 1.15; letter-spacing: -0.3px; text-shadow: 0 2px 8px rgba(0,0,0,0.9);
             }
-            .logo-col-yellow { color: var(--taxi-yellow); font-weight: 900; font-size: 1.15rem; }
-            .logo-col-white { color: #fff; font-weight: 700; font-size: 0.95rem; }
-            .status-active { font-size: 0.65rem; padding: 6px 12px; }
+            .logo-col-yellow { font-size: 0.9rem; }
+            .logo-col-white { font-size: 0.75rem; }
+            .status-active { font-size: 0.65rem; padding: 6px 10px; gap: 4px; }
+            
             .hero { height: 94vh; }
             .hero-main-content { transform: translateY(-3vh); } 
-            .anim-text { font-size: 24px; }
+            
+            /* Metinlerin taşmasını engelleyen alan genişletmesi */
+            .text-wrapper { height: 120px; } 
+            .anim-text { font-size: 24px; line-height: 1.2; padding: 0 5%; }
+            
             .btn-container { flex-direction: column; align-items: center; gap: 12px; margin: 15px 0; }
-            .my-btn { width: 90%; height: 75px; font-size: 17px; }
+            
+            /* Butonlardaki asimetrik kaymayı önleyen, Taksi'deki gibi simetrik yapı */
+            .my-btn { width: 90%; height: 75px; font-size: 17px; border-radius: 30px !important; }
+            
             .sticky-call { width: 45px; height: 45px; font-size: 20px; bottom: 15px; right: 12px; }
             .copy-number-wrapper { padding: 8px 20px; gap: 10px; border-radius: 30px; margin-top: 5px; }
             .copy-icon { font-size: 20px; }
@@ -422,13 +447,13 @@
                 </div>
 
                 <div class="btn-container">
-                    <a href="tel:05332153481" class="my-btn btn-call" aria-label="Hemen Oto Çekici Çağır" onclick="gtag('event', 'conversion', {'send_to': 'AW-16894468875/iZ9vCNHC1aMaEIvG9Pc-'});">📞 ÇEKİCİ ÇAĞIR <small style="display:block; font-size:12px;">Tıkla Hemen Ara</small></a>
-                    <a href="https://wa.me/905332153481" target="_blank" class="my-btn btn-wp" aria-label="WhatsApp Üzerinden Konum Gönder">💬 WHATSAPP <small style="display:block; font-size:12px;">Konum Gönder</small></a>
+                    <a href="tel:05345957444" class="my-btn btn-call" aria-label="Hemen Oto Çekici Çağır" onclick="gtag('event', 'conversion', {'send_to': 'AW-16894468875/iZ9vCNHC1aMaEIvG9Pc-'});">📞 ÇEKİCİ ÇAĞIR <small style="display:block; font-size:12px;">Tıkla Hemen Ara</small></a>
+                    <a href="https://wa.me/905345957444" target="_blank" class="my-btn btn-wp" aria-label="WhatsApp Üzerinden Konum Gönder">💬 WHATSAPP <small style="display:block; font-size:12px;">Konum Gönder</small></a>
                 </div>
 
                 <div class="copy-number-wrapper" onclick="copyNumber(); gtag('event', 'conversion', {'send_to': 'AW-16894468875/iZ9vCNHC1aMaEIvG9Pc-'});" aria-label="Çekici Telefon Numarasını Kopyala">
                     <div class="copy-icon" aria-hidden="true">📋</div>
-                    <div class="number-text">0533 215 34 81</div>
+                    <div class="number-text">0534 595 74 44</div>
                     <div class="copy-feedback" id="copyFeedback">Kopyalandı</div>
                 </div>
 
@@ -441,7 +466,7 @@
             </div>
         </section>
 
-        <a href="tel:05332153481" class="sticky-call" aria-label="Hızlı Çekici Arama Butonu" onclick="gtag('event', 'conversion', {'send_to': 'AW-16894468875/iZ9vCNHC1aMaEIvG9Pc-'});">📞</a>
+        <a href="tel:05345957444" class="sticky-call" aria-label="Hızlı Çekici Arama Butonu" onclick="gtag('event', 'conversion', {'send_to': 'AW-16894468875/iZ9vCNHC1aMaEIvG9Pc-'});">📞</a>
 
         <!-- ANA EKRANA EKLE BAR (PWA) -->
         <aside id="pwaBanner" class="pwa-banner hidden" aria-label="Uygulama Yükleme Bildirimi">
@@ -559,7 +584,7 @@
             });
 
             window.copyNumber = function() {
-                const rawNumber = "05332153481";
+                const rawNumber = "05345957444";
                 if (navigator.clipboard && window.isSecureContext) {
                     navigator.clipboard.writeText(rawNumber).then(showCopyFeedback).catch(fallbackCopy);
                 } else {
@@ -569,7 +594,7 @@
 
             function fallbackCopy() {
                 let textArea = document.createElement("textarea");
-                textArea.value = "05332153481";
+                textArea.value = "05345957444";
                 textArea.style.position = "fixed";
                 textArea.style.left = "-999999px";
                 textArea.style.top = "-999999px";
@@ -700,7 +725,7 @@
                     navigator.serviceWorker.register('sw.js').catch(() => {});
                 });
             }
-        }); // DOMContentLoaded sonu
+        }); 
 
         // Güvenlik Önlemleri
         document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
