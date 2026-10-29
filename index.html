@@ -28,7 +28,6 @@
       "@context": "https://schema.org",
       "@type": "EmergencyService",
       "name": "Malatya Oto Çekici & 7/24 Oto Kurtarma",
-      "description": "Malatya genelinde 7/24 acil oto çekici, oto kurtarma, yol yardım, kaza ve arıza araç kurtarma, şehir içi ve şehirler arası sigortalı araç taşıma hizmeti.",
       "telephone": "+905345957444",
       "areaServed": [
         { "@type": "City", "name": "Malatya" },
@@ -194,7 +193,7 @@
         }
         .anim-text.active { opacity: 1; }
 
-        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative; width: 100%;}
+        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative;}
         .my-btn {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             width: 210px; height: 90px; color: white; font-weight: bold; text-decoration: none;
@@ -235,9 +234,8 @@
         }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-        /* Telefon Butonu Sağda Hizalama Sorunu Çözüldü */
         .sticky-call {
-            position: fixed; bottom: 85px; right: 25px; width: 55px; height: 55px;
+            position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px;
             background: #ffca08; border-radius: 50%; display: flex; align-items: center;
             justify-content: center; font-size: 26px; text-decoration: none;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 9999; animation: pulse-button 2s infinite;
@@ -251,7 +249,7 @@
         /* ANA EKRANA EKLE BAR (PWA) */
         .pwa-banner {
             position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
-            width: calc(100% - 32px); max-width: 430px; background: rgba(15, 15, 15, 0.96);
+            width: calc(100% - 100px); max-width: 430px; background: rgba(15, 15, 15, 0.96);
             border: 1.5px solid var(--taxi-yellow); border-radius: 20px; padding: 10px 12px;
             display: flex; align-items: center; gap: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 15px rgba(255, 202, 8, 0.2);
@@ -362,8 +360,7 @@
             .btn-container { flex-direction: column; align-items: center; gap: 12px; margin: 15px 0; }
             .my-btn { width: 90%; height: 75px; font-size: 17px; }
             
-            /* Telefon ikonu yukarı çekildi (Çakışmayı önlemek için) */
-            .sticky-call { width: 45px; height: 45px; font-size: 20px; bottom: 80px; right: 12px; }
+            .sticky-call { width: 45px; height: 45px; font-size: 20px; bottom: 85px; right: 12px; }
             
             .copy-number-wrapper { padding: 8px 20px; gap: 10px; border-radius: 30px; margin-top: 5px; }
             .copy-icon { font-size: 20px; }
@@ -371,7 +368,6 @@
             .copy-instruction { font-size: 14px; margin-top: 10px; }
             .copy-instruction .arrow-up { width: 26px; height: 26px; margin-bottom: 2px; }
 
-            /* PWA Banner hizalaması ve genişliği düzeltildi */
             .pwa-banner {
                 left: 50%; right: auto; bottom: 10px; width: 90%; max-width: none;
                 transform: translateX(-50%); padding: 8px 10px; gap: 8px; border-radius: 16px;
@@ -410,7 +406,7 @@
 
     <header>
         <div class="logo">
-            <img src="MALATYA ÇİLİNGİR.jpg" alt="Malatya Oto Çekici ve Oto Kurtarma Logo" class="site-logo" id="main-logo" crossorigin="anonymous">
+            <img src="Malatya Taksi.jpg" alt="Malatya Oto Çekici ve Oto Kurtarma Logo" class="site-logo" id="main-logo" crossorigin="anonymous">
             <div class="logo-text-desktop">
                 <span>MALATYA OTO ÇEKİCİ</span> 7/24 Yol Yardım
             </div>
