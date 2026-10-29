@@ -92,12 +92,13 @@
             --text-white: #ffffff;
         }
 
+        /* Tüm elemanlarda taşmaları (overflow) engelleyen kilit kural */
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
         body, html {
-            margin: 0; padding: 0; width: 100%; 
+            margin: 0; padding: 0; width: 100%; max-width: 100vw;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #000; color: var(--text-white); scroll-behavior: smooth;
             overflow-x: hidden;
@@ -142,11 +143,10 @@
             box-sizing: border-box;
             z-index: 1000;
             border-bottom: none;
-            gap: 10px;
         }
 
-        .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 1; min-width: 0; }
-        .site-logo { height: 68px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.75)); flex-shrink: 0; }
+        .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 1; }
+        .site-logo { height: 68px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.75)); }
         .logo-text-desktop { font-weight: 700; font-size: 1.6rem; letter-spacing: -0.5px; display: block; text-shadow: 0 2px 10px rgba(0,0,0,0.85); }
         .logo-text-desktop span { 
             color: var(--taxi-yellow); font-weight: 900; text-transform: uppercase;
@@ -161,7 +161,6 @@
             font-weight: 900; color: #00ff88; font-size: 0.8rem; background: rgba(0, 0, 0, 0.45);
             padding: 8px 15px; border-radius: 40px; border: 2px solid #00ff88;
             display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            flex-shrink: 0;
         }
         .status-dot {
             width: 12px; height: 12px; background-color: #00ff88;
@@ -174,9 +173,8 @@
         }
 
         .hero {
-            position: relative; width: 100%; min-height: 95vh; background-color: #111; 
+            position: relative; width: 100%; height: 95vh; background-color: #111; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden;
-            padding: 100px 16px 40px; box-sizing: border-box;
         }
         .hero-video-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -186,31 +184,20 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.20)); z-index: 1; pointer-events: none;
         }
-        .hero-main-content { 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            width: 100%; max-width: 600px; z-index: 10; margin: 0 auto; 
-        }
-        .text-wrapper { 
-            position: relative; width: 100%; min-height: 90px; 
-            display: flex; justify-content: center; align-items: center; 
-        }
+        .hero-main-content { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; z-index: 10; }
+        .text-wrapper { position: relative; width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; }
         .anim-text {
             position: absolute; font-size: 38px; font-weight: 900; color: #fff;
             text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,0.8);
             opacity: 0; transition: opacity 0.6s ease-in-out; pointer-events: none;
-            width: 100%; text-align: center; padding: 0 10px; box-sizing: border-box;
         }
         .anim-text.active { opacity: 1; }
 
-        .btn-container { 
-            display: flex; justify-content: center; gap: 20px; z-index: 100; 
-            margin: 30px 0; position: relative; width: 100%; max-width: 460px;
-        }
+        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative;}
         .my-btn {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             width: 210px; height: 90px; color: white; font-weight: bold; text-decoration: none;
             box-shadow: 0 10px 30px rgba(0,0,0,0.9); transition: 0.3s ease; font-size: 18px;
-            box-sizing: border-box;
         }
         .btn-call { background: linear-gradient(to bottom, #FF8008, #FFA500); border-radius: 45px 15px 15px 45px; color: #000; }
         .btn-wp { background: linear-gradient(to bottom, #25d366, #128C7E); border-radius: 15px 45px 45px 15px; }
@@ -222,11 +209,10 @@
             backdrop-filter: var(--gb-blur); -webkit-backdrop-filter: var(--gb-blur);
             transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5); margin-top: 10px;
-            max-width: 100%; box-sizing: border-box;
         }
         .copy-number-wrapper:active { transform: scale(0.95); background: rgba(255, 202, 8, 0.2); box-shadow: 0 2px 8px rgba(0,0,0,0.8); }
-        .copy-icon { font-size: 28px; flex-shrink: 0; }
-        .number-text { font-size: 32px; font-weight: 900; color: var(--text-white); letter-spacing: 2px; white-space: nowrap; }
+        .copy-icon { font-size: 28px; }
+        .number-text { font-size: 32px; font-weight: 900; color: var(--text-white); letter-spacing: 2px; }
         
         .copy-feedback {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -295,13 +281,13 @@
             position: fixed; inset: 0; background: rgba(15, 23, 42, 0.86);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             z-index: 98000; display: none; align-items: center; justify-content: center;
-            padding: 16px; opacity: 0; transition: opacity 0.3s ease; box-sizing: border-box;
+            padding: 16px; opacity: 0; transition: opacity 0.3s ease;
         }
         .ios-pwa-overlay.show { display: flex; opacity: 1; }
         .ios-pwa-card {
             background: #1A1D20; color: #fff; border: 2.5px solid #FFC107;
             border-radius: 24px; padding: 24px 20px; width: 100%; max-width: 395px;
-            text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.7); position: relative; box-sizing: border-box;
+            text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.7); position: relative;
         }
         .ios-pwa-card h4 { font-size: 18px; font-weight: 900; color: #FFC107; margin-bottom: 8px; }
         .ios-pwa-card p { font-size: 12.5px; font-weight: 600; color: #E2E8F0; line-height: 1.5; margin-bottom: 14px; }
@@ -323,7 +309,7 @@
             cursor: pointer; text-transform: uppercase;
         }
 
-        .about-wrap { position: relative; padding: 100px 5%; display: flex; justify-content: center; align-items: center; overflow: hidden; background-color: #111; box-sizing: border-box; }
+        .about-wrap { position: relative; padding: 100px 5%; display: flex; justify-content: center; align-items: center; overflow: hidden; background-color: #111; }
         .about-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: opacity 0.5s ease; opacity: 0; }
         .about-video-bg.loaded { opacity: 1; }
         .about-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)); z-index: 1; pointer-events: none; }
@@ -352,40 +338,29 @@
         .f-title { font-weight: 800; font-size: 16px; color: var(--taxi-yellow); text-transform: uppercase; margin-bottom: 5px; }
         .f-desc { font-size: 13px; color: #ccc; }
 
-        footer { background: rgba(0, 0, 0, 0.85); padding: 50px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; }
+        footer { background: rgba(0, 0, 0, 0.85); padding: 50px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
 
         @media (max-width: 768px) {
-            header { padding: 12px 12px; gap: 6px; }
-            .site-logo { height: 44px; }
-            .logo { gap: 6px; }
+            .site-logo { height: 53px; }
             .logo-text-desktop { display: none; }
             .logo-text-mobile { 
-                display: flex; align-items: center; gap: 6px; text-align: left;
+                display: flex; align-items: center; gap: 10px; text-align: left;
                 line-height: 1.15; letter-spacing: -0.3px; text-shadow: 0 2px 8px rgba(0,0,0,0.9);
             }
-            .logo-col-yellow { color: var(--taxi-yellow); font-weight: 900; font-size: 0.95rem; }
-            .logo-col-white { color: #fff; font-weight: 700; font-size: 0.8rem; }
-            .status-active { font-size: 0.65rem; padding: 5px 8px; gap: 5px; }
-            
-            .hero { height: auto; min-height: 94vh; padding-top: 95px; padding-bottom: 30px; }
-            .hero-main-content { transform: none; width: 100%; } 
-            
-            .text-wrapper { min-height: 70px; height: auto; margin-bottom: 10px; }
-            .anim-text { font-size: 22px; position: relative; }
-            .anim-text:not(.active) { display: none; }
-            
-            .btn-container { flex-direction: column; align-items: center; gap: 12px; margin: 15px 0; width: 100%; }
-            .my-btn { width: 100%; max-width: 320px; height: 70px; font-size: 16px; border-radius: 20px; }
-            .btn-call { border-radius: 20px; }
-            .btn-wp { border-radius: 20px; }
-            
+            .logo-col-yellow { color: var(--taxi-yellow); font-weight: 900; font-size: 1.15rem; }
+            .logo-col-white { color: #fff; font-weight: 700; font-size: 0.95rem; }
+            .status-active { font-size: 0.65rem; padding: 6px 12px; }
+            .hero { height: 94vh; }
+            .hero-main-content { transform: translateY(-3vh); } 
+            .anim-text { font-size: 24px; }
+            .btn-container { flex-direction: column; align-items: center; gap: 12px; margin: 15px 0; }
+            .my-btn { width: 90%; height: 75px; font-size: 17px; }
             .sticky-call { width: 45px; height: 45px; font-size: 20px; bottom: 15px; right: 12px; }
-            
-            .copy-number-wrapper { padding: 10px 16px; gap: 10px; border-radius: 30px; margin-top: 5px; width: 100%; max-width: 320px; }
+            .copy-number-wrapper { padding: 8px 20px; gap: 10px; border-radius: 30px; margin-top: 5px; }
             .copy-icon { font-size: 20px; }
-            .number-text { font-size: 21px; letter-spacing: 1px; }
-            .copy-instruction { font-size: 13px; margin-top: 10px; }
-            .copy-instruction .arrow-up { width: 24px; height: 24px; margin-bottom: 2px; }
+            .number-text { font-size: 22px; }
+            .copy-instruction { font-size: 14px; margin-top: 10px; }
+            .copy-instruction .arrow-up { width: 26px; height: 26px; margin-bottom: 2px; }
 
             .pwa-banner {
                 left: 10px; right: 66px; bottom: 10px; width: auto; max-width: none;
@@ -398,25 +373,22 @@
             .pwa-desc { font-size: 10px; }
             .pwa-install-btn { padding: 8px 10px; font-size: 10.5px; border-radius: 10px; }
 
-            .about-wrap { padding: 40px 15px; } 
+            .about-wrap { padding: 40px 0; } 
             .about-box { 
-                width: 100%; margin: 0 auto; padding: 25px 15px; border-radius: 20px; 
+                width: 85%; margin: 0 auto; padding: 30px 15px; border-radius: 25px; 
                 background: rgba(0, 0, 0, 0.75); backdrop-filter: none; -webkit-backdrop-filter: none;
             } 
-            .about-title { font-size: 1.7rem; margin-bottom: 15px; }
-            .about-text { font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
+            .about-title { font-size: 1.8rem; margin-bottom: 20px; }
+            .about-text { font-size: 1rem; margin-bottom: 25px; }
             .why-us-card { 
                 padding: 15px; background: rgba(0, 0, 0, 0.4);
-                backdrop-filter: none; -webkit-backdrop-filter: none; border-left: 3px solid var(--taxi-yellow); margin-bottom: 25px;
+                backdrop-filter: none; -webkit-backdrop-filter: none; border-left: 3px solid var(--taxi-yellow); margin-bottom: 30px;
             }
-            .why-us-card h3 { font-size: 1.2rem; }
-            .why-us-list li { font-size: 0.9rem; }
+            .why-us-card h3 { font-size: 1.3rem; }
+            .why-us-list li { font-size: 0.95rem; }
             .features-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-            .icon { width: 48px; height: 48px; font-size: 20px; margin-bottom: 8px; }
-            .f-title { font-size: 11px; }
-            .f-desc { font-size: 11px; }
-            
-            footer { padding: 30px 15px; }
+            .icon { width: 50px; height: 50px; font-size: 22px; margin-bottom: 10px; }
+            .f-title { font-size: 12px; }
         }
     </style>
 </head>
@@ -428,7 +400,7 @@
 
     <header>
         <div class="logo">
-            <img src="Malatya Taksi.jpg" alt="Malatya Oto Çekici ve Oto Kurtarma Logo" class="site-logo">
+            <img src="Malatya Taksi.jpg" alt="Malatya Oto Çekici ve Oto Kurtarma Logo" class="site-logo" id="main-logo" crossorigin="anonymous">
             <div class="logo-text-desktop">
                 <span>MALATYA OTO ÇEKİCİ</span> 7/24 Yol Yardım
             </div>
@@ -574,6 +546,54 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
+            // JAVASCRIPT CHROMA-KEY (Logonun Orijinal Renklerini Bozmadan Sadece Beyaz Arkaplanını Siler)
+            const siteLogo = document.getElementById('main-logo');
+            if (siteLogo) {
+                const removeWhiteBg = function() {
+                    if (siteLogo.getAttribute('data-processed')) return;
+                    try {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                        canvas.width = siteLogo.naturalWidth || siteLogo.width;
+                        canvas.height = siteLogo.naturalHeight || siteLogo.height;
+                        if(canvas.width === 0) return; // Görsel henüz tam yüklenmediyse bekle
+                        
+                        ctx.drawImage(siteLogo, 0, 0, canvas.width, canvas.height);
+                        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                        const data = imgData.data;
+                        
+                        for (let i = 0; i < data.length; i += 4) {
+                            const r = data[i], g = data[i + 1], b = data[i + 2];
+                            // Yalnızca beyaz ve beyaza çok yakın renk tonlarını tespit et
+                            if (r > 200 && g > 200 && b > 200) {
+                                const maxDiff = Math.max(Math.abs(r - g), Math.abs(g - b), Math.abs(r - b));
+                                // Renkler gri/beyaz skalasındaysa pikselleri şeffaflaştır
+                                if(maxDiff < 25) { 
+                                    const avg = (r + g + b) / 3;
+                                    if (avg > 230) {
+                                        data[i + 3] = 0; // Tam saydam yap
+                                    } else {
+                                        data[i + 3] = Math.round(((230 - avg) / 30) * 255); // Kenarları yumuşatarak sil
+                                    }
+                                }
+                            }
+                        }
+                        ctx.putImageData(imgData, 0, 0);
+                        siteLogo.src = canvas.toDataURL(); // Temizlenmiş resmi orjinal logoya ata
+                        siteLogo.setAttribute('data-processed', 'true');
+                    } catch (e) {
+                        console.warn("Logo arka plan temizleme hatası:", e);
+                    }
+                };
+
+                if (siteLogo.complete) {
+                    removeWhiteBg();
+                } else {
+                    siteLogo.addEventListener('load', removeWhiteBg);
+                }
+            }
+
+
             function loop(s, t) {
                 const el = document.querySelectorAll(s); let i = 0;
                 if(el.length > 0) {
