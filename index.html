@@ -13,8 +13,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Malatya Çekici">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="Malatya Taksi.jpg">
-    <link rel="apple-touch-icon" href="Malatya Taksi.jpg">
+    <link rel="icon" href="MALATYA ÇİLİNGİR.jpg">
+    <link rel="apple-touch-icon" href="MALATYA ÇİLİNGİR.jpg">
 
     <link rel="preload" as="video" href="ana-sayfa-1.mp4" fetchpriority="high" type="video/mp4">
 
@@ -92,8 +92,12 @@
             --text-white: #ffffff;
         }
 
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body, html {
-            margin: 0; padding: 0; width: 100%; max-width: 100vw; 
+            margin: 0; padding: 0; width: 100%; max-width: 100vw;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #000; color: var(--text-white); scroll-behavior: smooth;
             overflow-x: hidden;
@@ -156,6 +160,7 @@
             font-weight: 900; color: #00ff88; font-size: 0.8rem; background: rgba(0, 0, 0, 0.45);
             padding: 8px 15px; border-radius: 40px; border: 2px solid #00ff88;
             display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            flex-shrink: 0;
         }
         .status-dot {
             width: 12px; height: 12px; background-color: #00ff88;
@@ -179,16 +184,17 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.20)); z-index: 1; pointer-events: none;
         }
-        .hero-main-content { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; z-index: 10; }
+        .hero-main-content { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 100vw; z-index: 10; box-sizing: border-box; }
         .text-wrapper { position: relative; width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; }
         .anim-text {
             position: absolute; font-size: 38px; font-weight: 900; color: #fff;
             text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,0.8);
             opacity: 0; transition: opacity 0.6s ease-in-out; pointer-events: none;
+            width: 100%; text-align: center; box-sizing: border-box; padding: 0 10px;
         }
         .anim-text.active { opacity: 1; }
 
-        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative;}
+        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative; width: 100%;}
         .my-btn {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             width: 210px; height: 90px; color: white; font-weight: bold; text-decoration: none;
@@ -229,8 +235,9 @@
         }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
+        /* Telefon Butonu Sağda Hizalama Sorunu Çözüldü */
         .sticky-call {
-            position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px;
+            position: fixed; bottom: 85px; right: 25px; width: 55px; height: 55px;
             background: #ffca08; border-radius: 50%; display: flex; align-items: center;
             justify-content: center; font-size: 26px; text-decoration: none;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 9999; animation: pulse-button 2s infinite;
@@ -244,7 +251,7 @@
         /* ANA EKRANA EKLE BAR (PWA) */
         .pwa-banner {
             position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
-            width: calc(100% - 100px); max-width: 430px; background: rgba(15, 15, 15, 0.96);
+            width: calc(100% - 32px); max-width: 430px; background: rgba(15, 15, 15, 0.96);
             border: 1.5px solid var(--taxi-yellow); border-radius: 20px; padding: 10px 12px;
             display: flex; align-items: center; gap: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 15px rgba(255, 202, 8, 0.2);
@@ -271,7 +278,7 @@
             font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0; padding: 0; line-height: 1;
         }
 
-        /* İOS (İPHONE) MANUEL YÜKLEME MODALI CSS (REFERANS KODUNDAN BİREBİR) */
+        /* İOS (İPHONE) MANUEL YÜKLEME MODALI CSS */
         .ios-pwa-overlay {
             position: fixed; inset: 0; background: rgba(15, 23, 42, 0.86);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -336,32 +343,40 @@
         footer { background: rgba(0, 0, 0, 0.85); padding: 50px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
 
         @media (max-width: 768px) {
-            .site-logo { height: 53px; }
+            header { padding: 10px 5px; } 
+            .site-logo { height: 42px; }
+            .logo { gap: 4px; }
             .logo-text-desktop { display: none; }
             .logo-text-mobile { 
-                display: flex; align-items: center; gap: 10px; text-align: left;
+                display: flex; align-items: center; gap: 6px; text-align: left;
                 line-height: 1.15; letter-spacing: -0.3px; text-shadow: 0 2px 8px rgba(0,0,0,0.9);
             }
-            .logo-col-yellow { color: var(--taxi-yellow); font-weight: 900; font-size: 1.15rem; }
-            .logo-col-white { color: #fff; font-weight: 700; font-size: 0.95rem; }
-            .status-active { font-size: 0.65rem; padding: 6px 12px; }
+            .logo-col-yellow { color: var(--taxi-yellow); font-weight: 900; font-size: 0.85rem; }
+            .logo-col-white { color: #fff; font-weight: 700; font-size: 0.75rem; }
+            .status-active { font-size: 0.6rem; padding: 5px 8px; gap: 4px; }
+            
             .hero { height: 94vh; }
             .hero-main-content { transform: translateY(-3vh); } 
-            .anim-text { font-size: 24px; }
+            .anim-text { font-size: 24px; padding: 0 5%; width: 100%; box-sizing: border-box;}
+            
             .btn-container { flex-direction: column; align-items: center; gap: 12px; margin: 15px 0; }
             .my-btn { width: 90%; height: 75px; font-size: 17px; }
-            .sticky-call { width: 45px; height: 45px; font-size: 20px; bottom: 15px; right: 12px; }
+            
+            /* Telefon ikonu yukarı çekildi (Çakışmayı önlemek için) */
+            .sticky-call { width: 45px; height: 45px; font-size: 20px; bottom: 80px; right: 12px; }
+            
             .copy-number-wrapper { padding: 8px 20px; gap: 10px; border-radius: 30px; margin-top: 5px; }
             .copy-icon { font-size: 20px; }
             .number-text { font-size: 22px; }
             .copy-instruction { font-size: 14px; margin-top: 10px; }
             .copy-instruction .arrow-up { width: 26px; height: 26px; margin-bottom: 2px; }
 
+            /* PWA Banner hizalaması ve genişliği düzeltildi */
             .pwa-banner {
-                left: 10px; right: 66px; bottom: 10px; width: auto; max-width: none;
-                transform: none; padding: 8px 10px; gap: 8px; border-radius: 16px;
+                left: 50%; right: auto; bottom: 10px; width: 90%; max-width: none;
+                transform: translateX(-50%); padding: 8px 10px; gap: 8px; border-radius: 16px;
             }
-            .pwa-banner.hidden { transform: translateY(20px); }
+            .pwa-banner.hidden { transform: translate(-50%, 20px); }
             .pwa-icon-box { width: 36px; height: 42px; border-radius: 9px; }
             .pwa-icon-inner { width: 22px; height: 28px; border-radius: 5px; }
             .pwa-title { font-size: 12.5px; }
@@ -395,7 +410,7 @@
 
     <header>
         <div class="logo">
-            <img src="Malatya Taksi.jpg" alt="Malatya Oto Çekici ve Oto Kurtarma Logo" class="site-logo" id="main-logo" crossorigin="anonymous">
+            <img src="MALATYA ÇİLİNGİR.jpg" alt="Malatya Oto Çekici ve Oto Kurtarma Logo" class="site-logo" id="main-logo" crossorigin="anonymous">
             <div class="logo-text-desktop">
                 <span>MALATYA OTO ÇEKİCİ</span> 7/24 Yol Yardım
             </div>
