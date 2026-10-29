@@ -92,7 +92,7 @@
             --text-white: #ffffff;
         }
 
-        /* Tüm elemanlarda taşmaları (overflow) engelleyen kilit kural */
+        /* Tüm elemanlarda taşmaları kesin engelleyen kilit kural */
         *, *::before, *::after {
             box-sizing: border-box;
         }
@@ -161,6 +161,7 @@
             font-weight: 900; color: #00ff88; font-size: 0.8rem; background: rgba(0, 0, 0, 0.45);
             padding: 8px 15px; border-radius: 40px; border: 2px solid #00ff88;
             display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            flex-shrink: 0;
         }
         .status-dot {
             width: 12px; height: 12px; background-color: #00ff88;
@@ -184,16 +185,18 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.20)); z-index: 1; pointer-events: none;
         }
-        .hero-main-content { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; z-index: 10; }
+        .hero-main-content { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 100vw; z-index: 10; box-sizing: border-box; }
         .text-wrapper { position: relative; width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; }
         .anim-text {
             position: absolute; font-size: 38px; font-weight: 900; color: #fff;
             text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,0.8);
             opacity: 0; transition: opacity 0.6s ease-in-out; pointer-events: none;
+            width: 100%; text-align: center; box-sizing: border-box; padding: 0 10px;
         }
         .anim-text.active { opacity: 1; }
 
-        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative;}
+        /* Butonlar orijinal boyutlarında bırakıldı */
+        .btn-container { display: flex; justify-content: center; gap: 20px; z-index: 100; margin: 30px 0; position: relative; width: 100%;}
         .my-btn {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             width: 210px; height: 90px; color: white; font-weight: bold; text-decoration: none;
@@ -341,20 +344,28 @@
         footer { background: rgba(0, 0, 0, 0.85); padding: 50px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
 
         @media (max-width: 768px) {
-            .site-logo { height: 53px; }
+            /* SADECE BURADA HEADER'I TAŞMAMASI İÇİN UFAK UFAK AYARLADIK */
+            header { padding: 10px 5px; } 
+            .site-logo { height: 42px; }
+            .logo { gap: 4px; }
             .logo-text-desktop { display: none; }
             .logo-text-mobile { 
-                display: flex; align-items: center; gap: 10px; text-align: left;
+                display: flex; align-items: center; gap: 6px; text-align: left;
                 line-height: 1.15; letter-spacing: -0.3px; text-shadow: 0 2px 8px rgba(0,0,0,0.9);
             }
-            .logo-col-yellow { color: var(--taxi-yellow); font-weight: 900; font-size: 1.15rem; }
-            .logo-col-white { color: #fff; font-weight: 700; font-size: 0.95rem; }
-            .status-active { font-size: 0.65rem; padding: 6px 12px; }
+            .logo-col-yellow { color: var(--taxi-yellow); font-weight: 900; font-size: 0.85rem; }
+            .logo-col-white { color: #fff; font-weight: 700; font-size: 0.75rem; }
+            .status-active { font-size: 0.6rem; padding: 5px 8px; gap: 4px; }
+            
             .hero { height: 94vh; }
             .hero-main-content { transform: translateY(-3vh); } 
-            .anim-text { font-size: 24px; }
+            .anim-text { font-size: 24px; padding: 0 5%; width: 100%; box-sizing: border-box;}
+            
+            /* BUTONLAR İLK KODUNDAKİ GİBİ ORİJİNAL KAVİS VE BOYUTUNDA */
             .btn-container { flex-direction: column; align-items: center; gap: 12px; margin: 15px 0; }
             .my-btn { width: 90%; height: 75px; font-size: 17px; }
+            
+            /* ALT BUTONLAR TAŞMA ÖNLENDİĞİ İÇİN KENDİLİĞİNDEN OTURACAK */
             .sticky-call { width: 45px; height: 45px; font-size: 20px; bottom: 15px; right: 12px; }
             .copy-number-wrapper { padding: 8px 20px; gap: 10px; border-radius: 30px; margin-top: 5px; }
             .copy-icon { font-size: 20px; }
@@ -592,7 +603,6 @@
                     siteLogo.addEventListener('load', removeWhiteBg);
                 }
             }
-
 
             function loop(s, t) {
                 const el = document.querySelectorAll(s); let i = 0;
